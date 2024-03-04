@@ -1,29 +1,7 @@
 <html>
   <body>
     <div id="root"></div>
+    <script src="./generator.js"></script>
   </body>
-  <script>
-    console.log("start");
-    const pattern = {
-      get() {
-        return "我总是返回这个字符串，无论你的赋值是什么";
-      },
-      set() {
-        this.myname = "这是我名称的字符串";
-      },
-    };
-    const testData = () => {
-     return Object.defineProperty(pattern, "myname", {
-        get() {
-          return "我总是返回这个字符串，无论你的赋值是什么";
-        },
-        set() {
-          this.myname = "这是我名称的字符串";
-        },
-      });
-    };
-    const data = testData();
-    data.myname = '1'
-    console.log("____", data.myname);
-  </script>
+  <script></script>
 </html>
