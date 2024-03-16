@@ -7,9 +7,10 @@ function App() {
   const [count, setCount] = useState(0)
   // eslint-disable-next-line no-debugger
   debugger
-  useEffect(()=>{
+  useEffect(() => {
     debugger
-  },[])
+    setCount(count + 1)
+  }, [])
   return (
     <>
       <div>
