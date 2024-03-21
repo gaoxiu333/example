@@ -62,3 +62,9 @@ type Optional<T> = {
     [K in keyof T]?: T[K]
 }
 
+// 类型断言
+let c = a as any as Foo
+
+// 条件类型和类型守卫
+type MyConditionalType<T> = T extends string ? 123 : 321
+
