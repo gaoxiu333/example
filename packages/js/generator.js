@@ -27,3 +27,5 @@ console.log(fn1.next())
 console.log(fn1.next())
 console.log(fn1.next())
 
+
+
