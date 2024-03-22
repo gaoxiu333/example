@@ -1,6 +1,7 @@
 /**
  * 堆
  * 特征：先进先出
+ * ref: https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/stack/Stack.js
  */
 class Stack {
     constructor() {

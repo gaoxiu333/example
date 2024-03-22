@@ -2,6 +2,7 @@
 /**
  * 队列
  * 特征：先进后出
+ * ref: https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/queue/Queue.js
  */
 class Queue {
     constructor() {
