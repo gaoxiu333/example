@@ -152,3 +152,67 @@ class Stack {
         this.stack = []
     }
 }
+
+// 二叉树
+
+// 节点
+class TreeNode {
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+    }
+}
+// 定义二叉树
+class BinaryTree {
+    constructor() {
+        this.root = null
+    }
+    insert(value) {
+        const newNode = new TreeNode(value)
+        if (!this.root) {
+            this.root = newNode
+        } else {
+            this.insertNode(this.root, newNode)
+        }
+    }
+    insertNode(node, newNode) {
+        if (newNode.value < node.value) {
+            if (!node.left) {
+                node.left = newNode
+            } else {
+                this.insertNode(node.left, newNode)
+            }
+        } else {
+            if (!node.right) {
+                node.right = newNode
+            } else {
+                this.insertNode(node.right, newNode)
+            }
+        }
+    }
+    // 中序遍历
+    inorderTraversal(node = this.root, callback) {
+        if (node) {
+            this.inorderTraversal(node.left, callback)
+            callback(node.value)
+            this.inorderTraversal(node.right)
+        }
+    }
+    // 先序遍历
+    preorderTraversal(node = this.root, callback) {
+        if (node) {
+            callback(node.value)
+            this.preorderTraversal(node.left, callback)
+            this.preorderTraversal(node.right, callback)
+        }
+    }
+    // 后序遍历
+    postorderTraversal(node = this.root, callback) {
+        if (node) {
+            this.postorderTraversal(node.left, callback)
+            this.postorderTraversal(node.right, callback)
+            callback(node.value)
+        }
+    }
+}
