@@ -1,18 +1,30 @@
 /**
  * 链表
+ * 1. 定义链表元素
+ * 2.定义链表
+ *  - prepend 
+ * - append
+ * - insert
+ * - find
+ * - delete
+ * - delatedHead
+ * - fromArray
+ * - toArray
+ * - toString
+ * - reverse
  */
-// 链表元素
+
 class LinkedListNode {
     constructor(value, next = null) {
         this.value = value
         this.next = next
     }
-    toString(callback) {
-        return callback ? callback(this.value) : `${this.value}`
+    toString() {
+        return `$${this.value}`
     }
 }
 
-/// 定义链表
+// 定义链表
 class LinkedList {
     constructor() {
         this.head = null
