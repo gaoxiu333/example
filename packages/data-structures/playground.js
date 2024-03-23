@@ -112,23 +112,43 @@ class LinkedList {
 }
 
 // 定义队列
-class Queue{
-    constructor(){
+class Queue {
+    constructor() {
         this.queue = []
     }
-    isEmpty(){
+    isEmpty() {
         return this.queue.length
     }
-    peek(){
+    peek() {
         return this.queue.at(0)
     }
-    enqueue(value){
+    enqueue(value) {
         this.queue.push(value)
     }
-    dequeue(){
+    dequeue() {
         this.queue.shift()
     }
-    clear(){
+    clear() {
         this.queue = []
+    }
+}
+
+// 定义栈数据
+// 先进先出
+class Stack {
+    constructor() {
+        this.stack = []
+    }
+    isEmpty() {
+        return this.stack.length === 0
+    }
+    push(value) {
+        this.stack.push(value)
+    }
+    pop() {
+        this.stack.pop()
+    }
+    clear() {
+        this.stack = []
     }
 }
