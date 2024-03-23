@@ -110,3 +110,25 @@ class LinkedList {
         }
     }
 }
+
+// 定义队列
+class Queue{
+    constructor(){
+        this.queue = []
+    }
+    isEmpty(){
+        return this.queue.length
+    }
+    peek(){
+        return this.queue.at(0)
+    }
+    enqueue(value){
+        this.queue.push(value)
+    }
+    dequeue(){
+        this.queue.shift()
+    }
+    clear(){
+        this.queue = []
+    }
+}
