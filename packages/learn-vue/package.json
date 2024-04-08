@@ -1,10 +1,8 @@
 {
-  "name": "common",
+  "name": "learn-vue",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/common.js",
-  "types": "./dist/main.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,7 +10,6 @@
   },
   "devDependencies": {
     "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "vite-plugin-dts": "^3.8.1"
+    "vite": "^5.2.0"
   }
 }

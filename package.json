@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jslib": "pnpm --filter jslib",
-    "draftapp": "pnpm --filter draft-app"
+    "draftapp": "pnpm --filter draft-app",
+    "vue:souce": "pnpm --filter learn-vue-source",
+    "html": "pnpm --filter html-app"
   },
   "keywords": [],
   "author": "",

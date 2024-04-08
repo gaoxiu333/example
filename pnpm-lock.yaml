@@ -51,7 +51,41 @@ importers:
         specifier: ^5.2.0
         version: 5.2.8
 
+  apps/html-app:
+    dependencies:
+      learn-vue-source:
+        specifier: workspace:*
+        version: link:../../packages/learn-vue-source
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.4.4
+      vite:
+        specifier: ^5.2.0
+        version: 5.2.8
+
   packages/jslib:
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.4.4
+      vite:
+        specifier: ^5.2.0
+        version: 5.2.8
+      vite-plugin-dts:
+        specifier: ^3.8.1
+        version: 3.8.1(typescript@5.4.4)(vite@5.2.8)
+
+  packages/learn-vue:
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.4.4
+      vite:
+        specifier: ^5.2.0
+        version: 5.2.8
+
+  packages/learn-vue-source:
     devDependencies:
       typescript:
         specifier: ^5.2.2

@@ -2,16 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { isBlank } from 'common'
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log('isBlank', isBlank)
+
   return (
     <>
       <div>
-        <p>undefined isBlank - {isBlank(undefined) ? 'true' : 'false'}</p>
-
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
