@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jslib": "pnpm --filter jslib",
+    "draftapp": "pnpm --filter draft-app"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "script": {
+    "jslib": "pnpm --filter common"
+  }
 }

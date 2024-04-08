@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>123</h1>
+    <button id="button">send DEMO1</button>
+    <iframe
+      id="iframe"
+      width="300"
+      height="300"
+      src="http://localhost:3000/public"
+    ></iframe>
+    <script>
+      window.addEventListener(
+        "message",
+        (event) => {
+          console.log("event", event);
+        },
+        false
+      );
+      window.addEventListener("load", function () {
+        console.log("load==============");
+        const $iframe = document.getElementById("iframe");
+        $iframe.contentWindow.postMessage("hello", "*");
+        const windowFeatures = "left=100,top=100,width=320,height=320";
+
+        // window.open("https://www.mozilla.org/", "_top", windowFeatures);
+        // var newWindow = window.open("", "_blank", "width=600,height=400");
+      });
+      //
+      const $button = document.getElementById("button");
+      $button.addEventListener("click", function () {
+        console.log("click==============");
+        // const $iframe = document.getElementById("iframe");
+        // $iframe.contentWindow.postMessage("hello", "*");
+        // var loginWindow = window.open(
+        //   "https://www.paypal.com/login",
+        //   "",
+        //   "width=600,height=400"
+        // );
+        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=600,height=300,left=100,top=100`;
+        window.open("/", "test", params);
+      });
+      // open paypal login
+    </script>
+  </body>
+</html>
