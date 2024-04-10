@@ -6,7 +6,13 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    dependencies:
+      packages:
+
+        specifier: link:/Users/xiu/code/example/packages
+
+        version: link:packages
 
   apps/draft-app:
     dependencies:
