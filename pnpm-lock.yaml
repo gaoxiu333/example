@@ -10,9 +10,6 @@ importers:
 
   apps/draft-app:
     dependencies:
-      jslib:
-        specifier: workspace:*
-        version: link:../../packages/jslib
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -53,9 +50,9 @@ importers:
 
   apps/html-app:
     dependencies:
-      learn-vue-source:
+      exercise:
         specifier: workspace:*
-        version: link:../../packages/learn-vue-source
+        version: link:../../packages/exercise
     devDependencies:
       typescript:
         specifier: ^5.2.2
@@ -64,7 +61,13 @@ importers:
         specifier: ^5.2.0
         version: 5.2.8
 
-  packages/jslib:
+  packages/backup:
+    devDependencies:
+      vite:
+        specifier: ^5.2.0
+        version: 5.2.8
+
+  packages/exercise:
     devDependencies:
       typescript:
         specifier: ^5.2.2
@@ -76,16 +79,7 @@ importers:
         specifier: ^3.8.1
         version: 3.8.1(typescript@5.4.4)(vite@5.2.8)
 
-  packages/learn-vue:
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.4.4
-      vite:
-        specifier: ^5.2.0
-        version: 5.2.8
-
-  packages/learn-vue-source:
+  packages/lib:
     devDependencies:
       typescript:
         specifier: ^5.2.2

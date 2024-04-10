@@ -24,3 +24,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 test(document.querySelector<HTMLButtonElement>('#counter')!)
+
+
+let a = 2
+console.log(a)
+console.log(typeof a)

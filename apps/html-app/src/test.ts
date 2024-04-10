@@ -1,4 +1,4 @@
-import { Vue } from 'learn-vue-source'
+import { Vue } from 'exercise'
 
 
 console.log('init', Vue)

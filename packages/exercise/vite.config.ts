@@ -8,7 +8,7 @@ export default {
         lib: { // 构建库
             entry: resolve(__dirname, 'src/main.ts'),
             formats: ['es', 'umd', 'cjs', 'iife'],
-            name:'jslib', // 存在um或者iife时，需要name作为全局变量的名字
+            name:'lib', // 存在um或者iife时，需要name作为全局变量的名字
             fileName:'main' // 生成文件名称，默认package.json中的name
         }
     },

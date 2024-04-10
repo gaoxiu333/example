@@ -4,19 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jslib": "pnpm --filter jslib",
-    "draftapp": "pnpm --filter draft-app",
-    "vue:souce": "pnpm --filter learn-vue-source",
-    "html": "pnpm --filter html-app"
+    "lib": "pnpm --filter lib",
+    "html": "pnpm --filter html-app",
+    "ex": "pnpm --filter exercise"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "workspaces": [
-    "packages/*"
-  ],
-  "script": {
-    "jslib": "pnpm --filter common"
-  }
+  "license": "ISC"
 }

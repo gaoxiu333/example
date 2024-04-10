@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // 将data变成可观察的
 
 function obserce(value, cb) {
