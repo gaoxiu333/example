@@ -1,17 +1,11 @@
-#!/usr/bin/env node
-import fs from 'fs/promises'
-// Define the project structure: directories and their respective files
+import { exec } from 'child_process'
 
-const projectStructure = {
-    'src': ['index.js'],
-    'public': ['index.html', 'styles.css'],
-};
-
-// Iterate over the structure, creating directories and files
-
-Object.entries(projectStructure).forEach(([dir, files]) => {
-    fs.mkdir(dir, { recursive: true }); // Create directories
-    files.forEach(file => fs.writeFile(`${dir}/${file}`, '')); // Create files
-});
-
-console.log("Project structure created successfully!");
+console.log('start')
+exec('npm create vite', (error, stdout, stderr) => {
+    if (error) {
+        console.error('执行 npm 命令出错：', error)
+    }
+    console.log(`stdout: ${stdout}`)
+    console.log(`stderr: ${stderr}`)
+})
+console.log('end')

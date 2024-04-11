@@ -5,9 +5,12 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": { // 涵盖了语言应该如何工作
     /* Visit https://aka.ms/tsconfig to read more about this file */
-    "target": "es2016",
-    "module": "Node16",
-    "moduleResolution": "Node16",
+    "lib": [
+      "ESNext"
+    ],
+    "target": "ESNext",
+    "module": "node16",
+    "moduleResolution": "node16",
     // "allowJs": true, 是否允许js
     "outDir": "./dist", /* Specify an output folder for all emitted files. */
     "allowSyntheticDefaultImports": true, /* 允许没有默认导出时兼容 ES 语法: import * as react from 'react' -> import react from 'react' */
@@ -16,7 +19,8 @@
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
     /* Type Checking */
     "strict": true, /* Enable all strict type-checking options. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "sourceMap": true
   },
   "include": [
     "src/**/*", // 指定程序中应包含哪些文件。
