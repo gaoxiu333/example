@@ -17,9 +17,13 @@
     "@types/cross-spawn": "^6.0.6",
     "@types/node": "^20.12.7",
     "cross-spawn": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.0.0",
     "minimist": "^1.2.8",
     "nanospinner": "^1.1.0",
     "ora": "^8.0.1",
+    "prettier": "3.2.5",
     "prompts": "^2.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
