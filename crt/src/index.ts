@@ -16,6 +16,14 @@ const PKGS = [
     {
         name: 'prettier',
         args: ['-D', '--save-exact']
+    },
+    {
+        name: 'eslint-plugin-prettier',
+        args: [],
+    },
+    {
+        name: 'eslint-config-prettier',
+        args: []
     }
 ]
 
