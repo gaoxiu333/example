@@ -20,6 +20,7 @@ export default function Root() {
     const submit = useSubmit()
     const searching = navigation.location && new URLSearchParams(navigation.location.search).has('q')
     useEffect(() => {
+        // @ts-expect-error
         document.getElementById('q')!.value = q
     }, [q])
     return (
