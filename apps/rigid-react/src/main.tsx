@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import "./index.css";
-import { Button } from "./components/ui/button";
+import { Dashboard } from "./App";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Dashboard />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <h1 className="text-3xl font-bold underline">Hello world!</h1> <h1>11</h1>
-    <Button>test</Button>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );
