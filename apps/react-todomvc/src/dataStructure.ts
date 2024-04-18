@@ -5,7 +5,7 @@ export type Routes = "/" | "/active" | "/completed";
 export interface Todo {
   id: string;
   bodyText: string;
-  complted: boolean;
+  completed: boolean;
 }
 
 export type TodoListType = Todo[];
