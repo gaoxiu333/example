@@ -20,6 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "config", "config-zod"],
+  "exclude": ["node_modules", "build", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "lib": "pnpm --filter lib",
-    "html": "pnpm --filter html-app",
-    "ex": "pnpm --filter exercise"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
