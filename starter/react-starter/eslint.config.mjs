@@ -2,6 +2,8 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import hooksPlugin from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -28,6 +30,7 @@ export default tseslint.config(
   {
     ignores: ["eslint.config.mjs", ".prettierrc.mjs"],
   },
+  eslintPluginPrettierRecommended, 
   // 禁用js文件类型感知  和忽略有什么区别？
   // {
   //   files: ["*.js", "*.cjs", "*.mjs"],
