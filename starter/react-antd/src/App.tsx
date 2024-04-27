@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
-import {
-  useLocation,
-  useNavigate,
-  useNavigation,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const { Header, Content, Sider } = Layout;
 
