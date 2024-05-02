@@ -2,6 +2,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useReducer,
   useRef,
   useState,
 } from "react";
@@ -15,11 +16,16 @@ function initState() {
 }
 const Home = () => {
   const [count, setCount] = useState(initState());
+  const [force, forceRender] = useReducer((x) => x + 1, 0);
   // const [other, setOther];
   const ref = useRef(null);
   const handleClick = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
+    forceRender();
   };
+  useEffect(() => {
+    console.log("force", force);
+  }, [force]);
   useEffect(() => {
     console.log("useEffect", count);
     return () => {
