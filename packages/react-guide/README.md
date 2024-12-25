@@ -1,4 +1,0 @@
-## TODO
-
-- [ ] react-router
-- [ ] tailwindcss
