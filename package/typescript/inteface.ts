@@ -43,3 +43,35 @@ class Dog implements Animal {
     console.log(this.name, "bark");
   }
 }
+
+/**
+ * 特性：
+ * 1. 只读属性
+ * 2. 索引签名
+ * 3. 可选属性
+ * 4. 重载
+ */
+interface FullUser {
+  readonly _id?: number; // 只读 ｜ 可选
+  [key: string]: any; // 索引签名
+  updateName(name: string): void;
+  updateName(name: string, age: number): void; // 重载
+  (): void; // ??
+}
+
+/**
+ * extends
+ * 继承
+ * 注意：也可以通过合并相同名字的接口来实现继承/拓展
+ */
+interface Animal {
+  name: string;
+}
+interface Dog extends Animal {
+  age: number;
+}
+const dog: Dog = {
+  name: "dog", // 父类属性
+  makeSound: () => {}, // 父类方法
+  age: 1,
+};
