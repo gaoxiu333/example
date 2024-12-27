@@ -9,6 +9,8 @@ function printToConsole(s: string) {
 }
 greeter(printToConsole);
 
+type Handler = (e: Event) => void;
+
 /**
  * 语法
  * （a:string) => void
