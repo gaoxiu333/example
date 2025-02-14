@@ -4,6 +4,7 @@ import usersReducer from '@/features/users/usersSlice'
 import authReducer from '@/features/auth/authslice'
 import notificationReducer from '@/features/notifications/notificationsSlice'
 import { listenerMiddleware } from './listenerMiddleware'
+import { apiSlice } from '@/api/apislice'
 
 interface CounterState {
   value: number
@@ -24,8 +25,10 @@ export const store = configureStore({
     users: usersReducer,
     auth: authReducer,
     notification: notificationReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(listenerMiddleware.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(listenerMiddleware.middleware).concat(apiSlice.middleware),
 })
 
 export type AppStore = typeof store

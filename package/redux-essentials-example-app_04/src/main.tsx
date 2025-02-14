@@ -9,7 +9,7 @@ import { worker } from './api/server'
 import './primitiveui.css'
 import './index.css'
 import { Provider } from 'react-redux'
-import { fetchUsers } from './features/users/usersSlice'
+import { apiSliceWithUsers, fetchUsers } from './features/users/usersSlice'
 
 // Wrap app rendering so we can wait for the mock API to initialize
 async function start() {
@@ -17,7 +17,8 @@ async function start() {
   await worker.start({ onUnhandledRequest: 'bypass' })
 
   const root = createRoot(document.getElementById('root')!)
-  store.dispatch(fetchUsers())
+  // store.dispatch(fetchUsers())
+  store.dispatch(apiSliceWithUsers.endpoints.getUser.initiate())
   root.render(
     <React.StrictMode>
       <Provider store={store}>

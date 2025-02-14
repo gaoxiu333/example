@@ -1,20 +1,29 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { Link } from 'react-router-dom'
-import { fetchPosts, Post, selectAllPosts, selectPostById, selectPostError, selectPostIds, selectPostsStatus } from './postsSlice'
+import {
+  fetchPosts,
+  Post,
+  selectAllPosts,
+  selectPostById,
+  selectPostError,
+  selectPostIds,
+  selectPostsStatus,
+} from './postsSlice'
 import { TimeAgo } from './TimeAgo'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Spinner } from '@/components/Spinner'
 import { PostAuthor } from './PostAuthor'
 import { ReactionButtons } from './ReactionButtons'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useGetPostsQuery } from '@/api/apislice'
 
 interface PostExcerptProps {
-  postId: string
+  post: Post
 }
 
-let PostExcerpt = ({ postId }: PostExcerptProps) => {
-  const post = useAppSelector((state) => selectPostById(state, postId))
+let PostExcerpt = ({ post }: PostExcerptProps) => {
+  // const post = useAppSelector((state) => selectPostById(state, postId))
   return (
     <article className="post-excerpt" key={post.id}>
       <h3>
@@ -33,8 +42,14 @@ PostExcerpt = React.memo(PostExcerpt) as any
 
 export const PostList = () => {
   const dispatch = useAppDispatch()
-  const posts = useSelector(selectAllPosts)
+  const { data: posts = [], isLoading, isSuccess, isError, error, refetch } = useGetPostsQuery()
+  // const posts = useSelector(selectAllPosts)
   // const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date!))
+  const sortedPosts = useMemo(() => {
+    const sorted = posts.slice()
+    sorted.sort((a, b) => b.date.localeCompare(a.date))
+    return sorted
+  }, [posts])
   const postStatus = useAppSelector(selectPostsStatus)
   const postError = useAppSelector(selectPostError)
   useEffect(() => {
@@ -43,15 +58,15 @@ export const PostList = () => {
     }
   }, [dispatch, postStatus])
   let content: React.ReactNode
-  if (postStatus === 'pending') {
+  if (isLoading) {
     content = <Spinner text="Loading" />
-  } else if (postStatus === 'succeeded') {
+  } else if (isSuccess) {
     // const orderedPosts = posts.slice().sort((a, b) => a.date.localeCompare(a.date))
-  const orderPostIds = useSelector(selectPostIds)
+    // const orderPostIds = useSelector(selectPostIds)
 
-    content = orderPostIds.map((postId) => <PostExcerpt key={postId} postId={postId} />)
-  } else if (postStatus === 'failed') {
-    content = <div>{postError}</div>
+    content = sortedPosts.map((post) => <PostExcerpt key={post.id} post={post} />)
+  } else if (isError) {
+    content = <div>{error.toString()}</div>
   }
 
   // const renderedPosts = orderPostIds.map((post) => (
@@ -67,6 +82,7 @@ export const PostList = () => {
     <>
       <section className="posts-list">
         <h2>Posts </h2>
+        <button onClick={refetch}>Refetch Posts</button>
         {content}
       </section>
     </>

@@ -1,12 +1,15 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { useNavigate, useParams } from 'react-router-dom'
 import { postUpdated, selectPostById } from './postsSlice'
+import { useEditPostMutation, useGetPostQuery } from '@/api/apislice'
 
 export const EditPostForm = () => {
   const { postId } = useParams()
-  const post = useAppSelector((state) => selectPostById(state, postId!))
+  // const post = useAppSelector((state) => selectPostById(state, postId!))
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const { data: post } = useGetPostQuery(postId!)
+  const [updatePost, { isLoading }] = useEditPostMutation()
   if (!post) {
     return (
       <section>
@@ -14,13 +17,14 @@ export const EditPostForm = () => {
       </section>
     )
   }
-  const onSavePostClicked = (e: React.FormEvent) => {
+  const onSavePostClicked = async (e: React.FormEvent) => {
     e.preventDefault()
     const { elements } = e.currentTarget as HTMLFormElement & { elements: { [key: string]: { value: string } } }
     const title = elements.postTitle.value
     const content = elements.postContent.value
     if (title && content) {
-      dispatch(postUpdated({ title, content, id: post.id }))
+      // dispatch(postUpdated({ title, content, id: post.id }))
+      await updatePost({ id: post.id, title, content })
       navigate(`/posts/${postId}`)
     }
   }

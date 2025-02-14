@@ -1,13 +1,16 @@
 import { RootState } from '@/app/store'
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter, createSelector, createSlice, EntityState } from '@reduxjs/toolkit'
 import { selectCurrentUsername } from '../auth/authslice'
 import { createAppAsyncThunk } from '@/app/withTypes'
 import { client } from '@/api/client'
+import { apiSlice } from '@/api/apislice'
 
-interface User {
+export interface User {
   id: string
   name: string
 }
+
+const emptyUsers: User[] = []
 
 const userAdapter = createEntityAdapter<User>()
 
@@ -31,6 +34,17 @@ const usersSlice = createSlice({
   },
 })
 
+export const apiSliceWithUsers = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getUser: builder.query<EntityState<User, string>, void>({
+      query: () => '/users',
+      transformResponse(res: User[]) {
+        return userAdapter.setAll(initialState, res)
+      },
+    }),
+  }),
+})
+
 export default usersSlice.reducer
 // export const selectAllUsers = (state: RootState) => state.users
 // export const selectUserById = (state: RootState, userId: string | null) =>
@@ -38,8 +52,17 @@ export default usersSlice.reducer
 export const { selectAll: selectAllUsers, selectById: selectUserById } = userAdapter.getSelectors(
   (state: RootState) => state.users,
 )
+export const selectUserResult = apiSliceWithUsers.endpoints.getUser.select()
+export const selectUsersData = createSelector(selectUserResult, (result) => result.data ?? initialState)
+// export const selectAllUsers = createSelector(selectUserResult, (usersResult) => usersResult?.data ?? emptyUsers)
+// export const selectUserById = createSelector(
+//   selectAllUsers,
+//   (state: RootState, userId: string) => userId,
+//   (users, userId) => users.find((user) => user.id === userId),
+// )
 export const selectCurrentUser = (state: RootState) => {
   const currentUsername = selectCurrentUsername(state)
   if (!currentUsername) return
   return selectUserById(state, currentUsername)
 }
+export const { useGetUserQuery } = apiSliceWithUsers

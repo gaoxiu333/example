@@ -4,6 +4,7 @@ import { nanoid } from '@reduxjs/toolkit'
 import { selectAllUsers } from '../users/usersSlice'
 import { selectCurrentUsername } from '../auth/authslice'
 import { useState } from 'react'
+import { useAddNewPostMutation } from '@/api/apislice'
 
 export interface AddPostFormFields extends HTMLFormControlsCollection {
   postTitle: HTMLInputElement
@@ -20,6 +21,8 @@ export const AddPostForm = () => {
   const [addRequestStatus, setAddRequestStatus] = useState<'idle' | 'pending'>('idle')
   const currentUsername = useAppSelector(selectCurrentUsername)!
   const users = useAppSelector(selectAllUsers)
+  const userId = useAppSelector(selectCurrentUsername)!
+  const [addNewPost, { isLoading }] = useAddNewPostMutation()
   const handleSubmit = async (e: React.FormEvent<AddPostFormElements>) => {
     e.preventDefault()
     const { elements } = e.currentTarget
@@ -28,11 +31,12 @@ export const AddPostForm = () => {
     const userId = currentUsername
 
     // dispatch(postAdded(title, content, userId))
+    const form = e.currentTarget
 
     try {
       setAddRequestStatus('pending')
-      await dispatch(addNewPost({ title, content, user: userId })).unwrap()
-      e.currentTarget.reset()
+      await addNewPost({ title, content, user: userId }).unwrap()
+      form.reset()
     } catch (err) {
       console.error('Failed to save the post:', err)
     } finally {
@@ -58,7 +62,7 @@ export const AddPostForm = () => {
         </select> */}
         <label htmlFor="postContent">Content:</label>
         <textarea id="postContent" name="postContent" defaultValue="" required />
-        <button>Save Post</button>
+        <button disabled={isLoading}>Save Post</button>
       </form>
     </section>
   )

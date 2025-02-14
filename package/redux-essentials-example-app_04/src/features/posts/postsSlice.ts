@@ -5,6 +5,7 @@ import { logout, userLoggedOut } from '../auth/authslice'
 import { createAppAsyncThunk } from '@/app/withTypes'
 import { client } from '@/api/client'
 import { AppStartListening } from '@/app/listenerMiddleware'
+import { apiSlice } from '@/api/apislice'
 
 export interface Reactions {
   thumbsUp: number
@@ -25,8 +26,8 @@ export interface Post {
   reactions: Reactions
 }
 
-type PostUpdate = Pick<Post, 'id' | 'title' | 'content'>
-type NewPost = Pick<Post, 'title' | 'content' | 'user'>
+export type PostUpdate = Pick<Post, 'id' | 'title' | 'content'>
+export type NewPost = Pick<Post, 'title' | 'content' | 'user'>
 
 // 添加post的请求状态
 interface PostsState extends EntityState<Post, string> {
@@ -62,7 +63,8 @@ const initialReactions: Reactions = {
 // 监听器
 export const addPostsListeners = (startAppListening: AppStartListening) => {
   startAppListening({
-    actionCreator: addNewPost.fulfilled,
+    // actionCreator: addNewPost.fulfilled,
+    matcher: apiSlice.endpoints.addNewPost.matchFulfilled,
     effect: async (action, listenerApi) => {
       const { toast } = await import('react-tiny-toast')
       const toastId = toast.show('New post added!', {
