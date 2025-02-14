@@ -1,7 +1,8 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
+import {createStore} from 'redux'
 
 // 原始 redux
-function counterReducer(state = { value: 0 }, action) {
+function counterReducer(state = { value: 0 }, action: { type: string }) {
   switch (action.type) {
     case "counter/incremented":
       return { value: state.value + 1 };
@@ -11,7 +12,7 @@ function counterReducer(state = { value: 0 }, action) {
       return state;
   }
 }
-
+const storeOrg = createStore();
 const counterSlice = createSlice({
   name: "counter demo",
   initialState: {
