@@ -1,22 +1,11 @@
-/**
- * 手写 call
- */
-Function.prototype.myCall = function (ctx = window, ...args) {
-  const fnKey = Symbol();
-  ctx[fnKey] = this;
-  const result = ctx[fnKey](...args);
-  return result;
-};
 
-// 使用示例
-function greet(name) {
-  console.log(`Hello ${name}, I'm ${this.name}`);
-}
-const obj = { name: "Alice" };
-greet.myCall(obj, "Bob"); // 输出: Hello Bob, I'm Alice
 
 /**
  * 手写bind
+ * case: 
+ * 1. 给定一个 user = {name:'Bob'}
+ * 2. const newFn = print.bind(user,...args)
+ * 3. newFn()   // 打印 user.name
  */
 Function.prototype.myBind = function (ctx, ...bindArgs) {
   const _self = this;
@@ -27,8 +16,27 @@ Function.prototype.myBind = function (ctx, ...bindArgs) {
     return _self.apply(ctx, bindArg.concat(args));
   };
 };
+
+/**
+ * 手写 call
+ * case: 
+ * 1. 给定一个 user = {name:'Bob'}
+ * 2. print.call(user,...args) // 打印 user.name
+ * 
+ */
+Function.prototype.myCall = function (ctx = window, ...args) {
+  const fnKey = Symbol();
+  ctx[fnKey] = this;
+  const result = ctx[fnKey](...args);
+  return result;
+};
+
+
 /**
  * 手写 apply
+ * case
+ * 1...
+ * 2...
  */
 
 Function.prototype.myApply = function (ctx = window, args = []) {
@@ -41,6 +49,9 @@ Function.prototype.myApply = function (ctx = window, args = []) {
 
 /**
  * 手写 instanceof
+ * case
+ * 1. 原型链继承检测
+ * 2. 如：myInstanceof(child, Parent)
  */
 function myInstanceof(obj,constructor){
     let prototype = Object.getPrototypeOf(obj)
