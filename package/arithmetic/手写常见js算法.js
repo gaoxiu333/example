@@ -65,7 +65,6 @@ function myInstanceof(obj,constructor){
 
 // 手写快速排序
 // 数组去重
-// 手写一个 instanceof
 // async await 设计和实现
 // require 和 import 的区别
 // 这写算法的注意要点！
