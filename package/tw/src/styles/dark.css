@@ -1,0 +1,6 @@
+@variant dark (&:where(.dark, .dark *)); /* <body class="dark"> */
+
+/*  
+ @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *);
+*/
+/* <body data-theme="dark"> */
