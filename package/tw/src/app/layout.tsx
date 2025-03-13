@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Nav } from "@/components/nav";
 import { ThemeProvider } from "@/features/theme-provider";
+import { WebVitals } from "@/components/web-vitals";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
 
             {children}
           </section>
+          <WebVitals />
         </body>
       </ThemeProvider>
     </html>

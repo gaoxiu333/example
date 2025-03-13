@@ -18,3 +18,8 @@
   - 字体加载+tailwindcss https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css
   - tailwindcss 中的字体 https://tailwindcss.com/docs/font-family
 TODO: 字体排版 DEMO
+
+性能分析
+https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics
+类似于百度分析：
+https://nextjs.org/docs/app/building-your-application/optimizing/instrumentation
