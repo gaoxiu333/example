@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export default function Home() {
+  console.log("0000w01");
   return (
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
@@ -8,7 +9,7 @@ export default function Home() {
           <div className="flex items-center space-x-2 text-base">
             <h4 className="font-semibold text-slate-900">Contributors</h4>
             <span className="bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-700 ...">
-              204
+              2041
             </span>
           </div>
           <div className="mt-3 flex -space-x-2 overflow-hidden"></div>
