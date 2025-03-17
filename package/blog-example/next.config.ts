@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 import createMdx from "@next/mdx";
+import rehypeMDXImportMedia from "rehype-mdx-import-media";
+
 
 const nextConfig = (phase: string) => {
   const withMDX = createMdx({
@@ -8,7 +10,7 @@ const nextConfig = (phase: string) => {
     options: {
       // optional remark and rehype plugins
       remarkPlugins: [],
-      rehypePlugins: [],
+      rehypePlugins: [rehypeMDXImportMedia],
     },
   });
 
@@ -28,6 +30,11 @@ const nextConfig = (phase: string) => {
     pageExtensions: ["js", "jsx", "ts", "tsx", "mdx", "md"],
     eslint: {
       ignoreDuringBuilds: true,
+    },
+    images: {
+      // file formats for next/image
+      formats: ["image/avif", "image/webp"],
+      deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2176, 3840],
     },
   };
   return withMDX(nextConfigOptions);
