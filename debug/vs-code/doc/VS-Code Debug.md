@@ -20,6 +20,8 @@ VS Code 有多种断点类型
 在 `.vscode/launch.json` 中配置调试器，比如，配置入口起点、附加到正在运行的应用程序或设置环境变量
 
 在 VS Code 中，有两种核心调试模式：Launch 和 Attach
+- Launch：会直接启用一个干净的浏览器
+- 可以配置 userDataDir 为false，表示使用当前浏览器（注意：有时候需要关闭现在的浏览器，避免启动失败）
 
 配置中的一些变量
 
